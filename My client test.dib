@@ -1,3 +1,46 @@
 #!meta
 
-{"kernelInfo":{"defaultKernelName":"fsharp","items":[{"aliases":[],"languageName":"fsharp","name":"fsharp"}]}}
+{"kernelInfo":{"defaultKernelName":"csharp","items":[{"aliases":[],"name":"csharp"},{"aliases":[],"languageName":"fsharp","name":"fsharp"}]}}
+
+#!fsharp
+
+#!about
+
+#!markdown
+
+This C# kernel client creation attempt doesnt work:
+
+#!csharp
+
+#r "nuget: Refit, 8.0.0"
+
+#!csharp
+
+#r "C:\Users\Seven\source\Netinteractive_Reft_issue\Netinteractive_Reft_issue\bin\Debug\net8.0\Netinteractive_Reft_issue.dll"
+using Netinteractive_Reft_issue;
+
+#!csharp
+
+var client = ClientMaker.MakeMyRefitClient();
+
+#!markdown
+
+The F# client creation from same dll works
+
+#!fsharp
+
+#r "nuget: Refit, 8.0.0"
+#r "nuget: System.Text.Json, 9.0.0"
+
+#!fsharp
+
+#r @"C:\Users\Seven\source\Netinteractive_Reft_issue\Netinteractive_Reft_issue\bin\Debug\net8.0\Netinteractive_Reft_issue.dll"
+open Netinteractive_Reft_issue;
+
+#!fsharp
+
+let client = ClientMaker.MakeMyRefitClient();
+
+#!fsharp
+
+client.GetOpenapi().Result.Content
